@@ -1,0 +1,80 @@
+\documentclass{article}
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2020
+
+% ready for submission
+% \usepackage{neurips_2020}
+
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+%     \usepackage[preprint]{neurips_2020}
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+     \usepackage[final]{neurips_2020}
+
+% to avoid loading the natbib package, add option nonatbib:
+%     \usepackage[nonatbib]{neurips_2020}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{comment}
+
+\title{Review on A SPATIAL ANALYSIS OF MULTIVARIATE OUTPUT FROM REGIONAL CLIMATE MODELS}
+
+\author{
+  Chris Chen \\
+  Department of Statistics\\
+  University of Washington\\
+  Seattle, WA 98105 \\
+  \texttt{zc58@uw.edu} \\
+  \And
+  Yueqi Xu \\
+  Department of Statistics\\
+  University of Washington\\
+  Seattle, WA 98105 \\
+  \texttt{xyq678@uw.edu} 
+}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+Climate has long been considered as an extremely hard subject to model due to its highly unpredictable nature and large dependencies on the initial conditions, e.g. initial temperature at a given location. However, the significance of a good climate model cannot be ignored, to the end that humans rely on such models to make predictions on global, regional, and local climate change in things like seasonal temperature and precipitation. Moreover, forecasts on drastic global warming or potential natural disasters are also of great importance to the human race; such forecasts rely heavily on the predictive power of climate models. Therefore, the need for climate models with high predictive power increases with time. 
+
+In the past several decades, numerous attempts have been made to truthfully represent how the climate system changes under the influence of initial conditions, and they have been largely successful. However, a major challenge still remains unsolved--characterization of the distribution of the climate models' output. Therefore, an action is required. Fortunately, \cite{paper} have proposed an efficient and effective approach to conquer this challenge. This paper will be dedicated to summarizing and discussing the key features and experimental results of this approach. 
+
+\subsection{Difficulties}
+The fact that many changes and processes in the Earth's climate system cannot be directly observed and the sheer number of factors that could affect the Earth climate made studying climate a very tough mountain to climb. 
+
+Attempts made by experts across fields in the past few decades to represent the climate system as truthful and as real as possible has been largely successful. However, as the models get more and more complex, and more and more variations in initial conditions including initial states of the climate, assumptions of future forcings, and understandings of underlying physical processes (and how they are reflected in computer models) are taken into account, ensemble models are more and more widely used in the field, with each member of the ensemble being subjective to a distinct set of initial conditions. Yet, the number of models that can be included in an ensemble is limited due to the fact that the computational cost will be astronomical if we leave the number of models to be included in an ensemble unchecked. 
+
+\subsection{Goal}
+Given the challenge, statistical methods to quantify the distribution, namely the probabilistic projections of regional climate change, and breadth of variation, namely the correlation between fields and joint projections, of the model output in the ensemble are in great need. This need gives rise to a large amount of attention on this challenge of characterization of distribution of the model output. \cite{paper} set the goal to be developing a hierarchical statistical model to capture the multivariate spatial distribution of the output fields from a Regional Climate Model ensemble.
+
+\section{Methodology}
+Before discussing any climate models, the exact definition of climate needs to be provided first: climate is the long-term distribution of weather. In \cite{paper}, the focus is on Regional Climate Models (RCMs). Regional Climate Models are high-resolution models dynamically downscaled from Global Climate Models (GCMs) to focus on limited spatial domains. The grid boxes typical have a length of 20-100 km. 
+
+\subsection{Choice of Model: Markov Random Fields}
+\cite{paper} used Markov Random Field (MRF) to model the climate data for the following reasons. Firstly, MRF has been commonly used to model data laid out on a spatial lattice structure, for example, image data, epidemiological data, climate data, etc. Secondly, MRF models represent the conditional expectation of an observation at a given location as a linear combination of observations at neighboring locations. This feature made MRF the perfect choice for modeling climate, for that in reality regional climate is heavily dependent on the climate in neighboring regions. Lastly, compared to the conventional geostatistical approach, which is to model the spatial dependencies through covariance functions that typically depend on the distance between locations, MRF models are much faster for that their spatial precision matrices are largely sparse.
+
+\subsection{Conditional AutoRegressive Models and Previous Attempts}
+Conditional AutoRegressive (CAR) models are special MRFs where the conditional distribution is assumed to be Gaussian. Previously, attempts on modeling the regional climate data have tried univariate CAR models and multivariate CAR models. However, both formulations are somewhat problematic. Univariate CAR models contain only one observation at each lattice point. Therefore, they fail to model more than one variable at the same time. Although we cannot deny the speed and the importance of such models, recognition on the fact that these models are generally over-simplistic and lack real-world generalization ability cannot be missed. For example, \cite{paper} focused on modeling and predicting changes in seasonal temperatures and precipitations simultaneously--it cannot be done by univariate CAR models. On the other hand, multivariate CAR models have more than one observations at each lattice point.
+
+Consequently, though multivariate CAR models are able to model more than one variable simultaneously, it is typically extremely difficult to implement in practice without dramatic simplifications or using restrictive priors on certain parameter.
+
+\bibliographystyle{apalike} 
+\bibliography{References.bib}
+
+\end{document}
